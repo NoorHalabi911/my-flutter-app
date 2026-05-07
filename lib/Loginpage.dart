@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/widgets/login_widgets.dart';
+import 'package:quiz/designs/login_design_layout.dart';
 
 class LogeinScreen extends StatefulWidget {
   const LogeinScreen({super.key});
@@ -11,26 +11,6 @@ class LogeinScreen extends StatefulWidget {
 class _LoginScreenState extends State<LogeinScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("log-in"), centerTitle: true),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const LoginEmailField(),
-
-            const SizedBox(height: 20),
-
-            const LoginPasswordField(),
-
-            const SizedBox(height: 20),
-
-            const LoginButton(),
-
-            const GoToSignUpButton(),
-          ],
-        ),
-      ),
-    );
+    return const Scaffold(body: LoginDesignLayout());
   }
 }

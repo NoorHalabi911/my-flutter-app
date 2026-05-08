@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/widgets/auth_fields.dart';
+import 'package:quiz/widgets/go_to_signup_button.dart';
 import 'package:quiz/widgets/signup_widgets.dart';
 
 class SignupDesignLayout extends StatelessWidget {
@@ -63,9 +65,9 @@ class SignupDesignLayout extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  SignupEmailField(controller: emailController),
+                  AuthEmailField(controller: emailController),
                   const SizedBox(height: 20),
-                  SignupPasswordField(
+                  AuthPasswordField(
                     isPasswordObscured: isPasswordObscured,
                     onToggleVisibility: onToggleVisibility,
                     controller: passwordController,
@@ -102,6 +104,8 @@ class SignupDesignLayout extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   const SignupGoogleButton(),
+                  const SizedBox(height: 16),
+                  const GoToLoginButton(),
                 ],
               ),
             ),

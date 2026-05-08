@@ -2,7 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:quiz/widgets/login_widgets.dart';
 
 class LoginDesignLayout extends StatelessWidget {
-  const LoginDesignLayout({super.key});
+   const LoginDesignLayout({
+    super.key,
+    required this.isPasswordObscured,
+    required this.onToggleVisibility,
+    required this.passwordController,
+    required this.emailController,
+  });
+
+  final bool isPasswordObscured;
+  final VoidCallback onToggleVisibility;
+  final TextEditingController passwordController;
+  final TextEditingController emailController;
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +51,13 @@ class LoginDesignLayout extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 36),
-                const LoginEmailField(),
+                AuthEmailField(controller: emailController),
                 const SizedBox(height: 22),
-                const LoginPasswordField(),
+                AuthPasswordField(
+                  isPasswordObscured: isPasswordObscured,
+                  onToggleVisibility: onToggleVisibility,
+                  controller: passwordController,
+                ),
                 const SizedBox(height: 24),
                 SizedBox(
                   width: 340,

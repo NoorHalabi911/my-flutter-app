@@ -9,8 +9,29 @@ class LogeinScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LogeinScreen> {
+   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+ 
+  bool isPasswordObscured = true;
+   @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: LoginDesignLayout());
+    return Scaffold(
+      body: LoginDesignLayout(
+        isPasswordObscured: isPasswordObscured,
+        onToggleVisibility: () {
+          setState(() {
+            isPasswordObscured = !isPasswordObscured;
+          });
+        },
+        passwordController: _passwordController,
+        emailController: _emailController,
+      ),
+    );
   }
 }

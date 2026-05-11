@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/theme/app_colors.dart';
 
-class SignupConfirmPasswordField extends StatelessWidget {
-  const SignupConfirmPasswordField({
+/// Second password field; must match [passwordController].
+class AuthPasswordConfirmTextField extends StatelessWidget {
+  const AuthPasswordConfirmTextField({
     super.key,
     required this.isObscured,
     required this.onToggleVisibility,
@@ -26,27 +28,33 @@ class SignupConfirmPasswordField extends StatelessWidget {
           if ((value ?? '').isEmpty) {
             return 'Please confirm your password';
           }
-          if (value != passwordController.text) {
+          if ((value ?? '').trim() != passwordController.text.trim()) {
             return 'Passwords do not match';
           }
           return null;
         },
         decoration: InputDecoration(
-          hintText: "Confirm Password",
-          hintStyle: const TextStyle(color: Color(0xFF5D6D9A)),
-          prefixIcon: const Icon(Icons.lock_outline, color: Color(0xFF3A5A92)),
+          hintText: 'Confirm Password',
+          hintStyle: const TextStyle(color: AppColors.hintSoft),
+          prefixIcon: const Icon(
+            Icons.lock_outline,
+            color: AppColors.checkboxAccent,
+          ),
           suffixIcon: IconButton(
             onPressed: onToggleVisibility,
             icon: Icon(
               isObscured ? Icons.visibility : Icons.visibility_off,
-              color: const Color(0xFF3A5A92),
+              color: AppColors.checkboxAccent,
             ),
           ),
           enabledBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFF3A5A92), width: 1.2),
+            borderSide: BorderSide(color: AppColors.checkboxAccent, width: 1.2),
           ),
           focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFF2E4C80), width: 1.4),
+            borderSide: BorderSide(
+              color: AppColors.inputFocusBorder,
+              width: 1.4,
+            ),
           ),
         ),
       ),
